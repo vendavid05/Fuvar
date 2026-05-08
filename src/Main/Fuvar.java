@@ -6,11 +6,11 @@ import java.util.Objects;
 public class Fuvar {
     private String rendszam;
     private int ido;
-    private int osszeg;
+    private double osszeg;
     private String fizetesiMod;
     
     
-    public Fuvar(String rendszam, int ido, int osszeg, String fizetesiMod) {
+    public Fuvar(String rendszam, int ido, double osszeg, String fizetesiMod) {
         this.rendszam = rendszam;
         this.ido = ido;
         this.osszeg = osszeg;   
@@ -25,7 +25,7 @@ public class Fuvar {
         return ido;
     }
 
-    public int getOsszeg() {
+    public double getOsszeg() {
         return osszeg;
     }
 
@@ -35,11 +35,11 @@ public class Fuvar {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.rendszam);
-        hash = 29 * hash + this.ido;
-        hash = 29 * hash + this.osszeg;
-        hash = 29 * hash + Objects.hashCode(this.fizetesiMod);
+        int hash = 5;
+        hash = 11 * hash + Objects.hashCode(this.rendszam);
+        hash = 11 * hash + this.ido;
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.osszeg) ^ (Double.doubleToLongBits(this.osszeg) >>> 32));
+        hash = 11 * hash + Objects.hashCode(this.fizetesiMod);
         return hash;
     }
 
@@ -58,7 +58,7 @@ public class Fuvar {
         if (this.ido != other.ido) {
             return false;
         }
-        if (this.osszeg != other.osszeg) {
+        if (Double.doubleToLongBits(this.osszeg) != Double.doubleToLongBits(other.osszeg)) {
             return false;
         }
         if (!Objects.equals(this.rendszam, other.rendszam)) {
@@ -69,8 +69,10 @@ public class Fuvar {
 
     @Override
     public String toString() {
-        return "Osztaly{" + "rendszam=" + rendszam + ", ido=" + ido + ", osszeg=" + osszeg + ", fizetesiMod=" + fizetesiMod + '}';
+        return "Fuvar{" + "rendszam=" + rendszam + ", ido=" + ido + ", osszeg=" + osszeg + ", fizetesiMod=" + fizetesiMod + '}';
     }
+
+    
     
     
 }

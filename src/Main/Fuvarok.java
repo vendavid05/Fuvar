@@ -24,7 +24,7 @@ public class Fuvarok {
                 
             String rsz = s[0];
             int ido = Integer.parseInt(s[1]);
-            int osszeg = Integer.parseInt(s[2]);
+            double osszeg = Integer.parseInt(s[2]);
             String mod = s[3];
             Fuvar fuvar = new Fuvar (rsz,ido,osszeg,mod);
             fuvarok.add(fuvar);
@@ -32,4 +32,15 @@ public class Fuvarok {
         
     }
     
+    private static void osszErtek(){
+        final int N = fuvarok.size();
+        int i = 0;
+        double osszErtek= 0;
+        
+        while(i < N ){
+            osszErtek += fuvarok.get(i).getOsszeg();
+        i++;
+        }
+        System.out.println(osszErtek);
+    }
 }
